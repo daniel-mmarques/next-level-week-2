@@ -18,7 +18,7 @@
         <div id = container>
             <header class="page-header">
                 <div class="top-bar-container">
-                    <a href="/html">
+                    <a href="/">
                         <img src="/images/icons/back.svg" alt="Voltar">
                     </a>
                     <img src="/images/logo.svg" alt="Proffy">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="input-block">
                             <label for="whatsapp">whatsapp<small>(somente números)</small></label>
-                            <input name="whatsapp" id="whatsapp" type="nunber" required>
+                            <input name="whatsapp" id="whatsapp" type="number" required>
                         </div>
                         <div class="textarea-block">
                             <label for="bio">Biografia</label>
@@ -55,29 +55,14 @@
                             <label for="subject">Matéria</label>
                             <select name="subject" id="subject" required>
                                 <option value="">Selecione uma opção</option>
-                                <option value="1">Artes</option>
-                                <option value="2">Biologia</option>
-                                <option value="3">Ciências</option>
-                                <option value="4">Educação física</option>
-                                <option value="5">Física</option>
-                                <option value="6">Geografia</option>
-                                <option value="7">História</option>
-                                <option value="8">Matemática</option>
-                                <option value="9">Português</option>
-                                <option value="10">Química</option>
-                                <option value="11">Java</option>
-                                <option value="12">Html</option>
-                                <option value="13">Css</option>
-                                <option value="14">Java script</option>
-                                <option value="15">C++</option>
-                                <option value="16">Robótica</option>
-                                <option value="17">Administração</option>
-                                <option value="18">Edição de video</option>
+                                {%for subject in subjects %}
+                                    <option value="{{loop.index}}" {{ "selected" if filters.subject == loop.index }}>{{subject}}</option>
+                                {%endfor%}
                             </select>
                         </div>
                         <div class="input-block">
                             <label for="cost">Custo da sua hora/aula <small>(R$)</small></label>
-                            <input type="cost" id="cost" type="nunber" required>
+                            <input name="cost" type="cost" id="cost" type="nunber" required>
                         </div>
                     </fieldset>
                     <fieldset id="schedule-items">
@@ -89,13 +74,9 @@
                                 <label for="weekday">Dia da semana</label>
                                 <select name="weekday[]" required>
                                     <option value="">Selecione uma opção</option>
-                                    <option value="0">Domingo</option>
-                                    <option value="1">Segunda-feira</option>
-                                    <option value="2">Terça-feira</option>
-                                    <option value="3">Quarta-feira</option>
-                                    <option value="4">Quinta-feira</option>
-                                    <option value="5">Sexta-feira</option>
-                                    <option value="6">Sábado</option>
+                                    {%for weekday in weekdays %}
+                                        <option value="{{loop.index0}}">{{weekday}}</option>
+                                    {%endfor%}
                                 </select>
                             </div>
                             <div class="input-block">
